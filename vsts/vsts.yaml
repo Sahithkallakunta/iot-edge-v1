@@ -31,10 +31,10 @@ phases:
     displayName: 'build'
 - phase: traceability
   queue:
-    name: 'Hosted VS2017'
+    name: 'win01'
   steps:
   - script: |
-      call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\Tools\\VsDevCmd.bat"
+      call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"
       call v1\jenkins\traceability.cmd
     displayName: 'build'
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
@@ -46,7 +46,7 @@ phases:
   queue: Hosted Ubuntu 1604
   steps:
   - script: |
-     sudo ./v1/jenkins/linux_c.sh
+     ./v1/jenkins/linux_c.sh
     displayName: 'build'
 - phase: wind_river
   variables:
