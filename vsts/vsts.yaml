@@ -41,7 +41,7 @@ phases:
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
     displayName: 'cleanup'
     condition: always()
-- phase: ubuntu-16.04-iot-edge
+- phase: ubuntu-1604-iot-edge
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-15.10-gateway"
   queue: Hosted Ubuntu 1604
