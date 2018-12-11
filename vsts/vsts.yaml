@@ -50,7 +50,7 @@ phases:
   - script: |
      sudo ./v1/jenkins/linux_c.sh
     displayName: 'build'
-- phase: ubuntu-16.04-iot-edge
+- phase: wind-river
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/wind-river-gateway"
   queue: Hosted Ubuntu 1604
