@@ -35,6 +35,7 @@ phases:
   steps:
   - script: |
       call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"
+      $(Agent.BuildDirectory)
       call v1\jenkins\traceability.cmd
     displayName: 'build'
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
