@@ -46,7 +46,9 @@ phases:
   queue: Hosted Ubuntu 1604
   steps:
   - script: |
-     ./v1/jenkins/linux_c.sh
+      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      export PATH=$PATH:/home/jenkins/maven/apache-maven-3.3.3/bin
+      ./v1/jenkins/linux_c.sh
     displayName: 'build'
 - phase: wind_river
   variables:
