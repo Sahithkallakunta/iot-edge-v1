@@ -25,7 +25,6 @@ phases:
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/inteledison-gateway"
   queue: Hosted Ubuntu 1604
-  displayName: build
   steps:
   - script: |
      sudo ./v1/jenkins/inteledison_c.sh
@@ -45,7 +44,6 @@ phases:
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-15.10-gateway"
   queue: Hosted Ubuntu 1604
-  displayName: build
   steps:
   - script: |
      sudo ./v1/jenkins/linux_c.sh
@@ -54,7 +52,6 @@ phases:
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/wind-river-gateway"
   queue: Hosted Ubuntu 1604
-  displayName: build
   steps:
   - script: |
      sudo ./v1/jenkins/windriver_linux_c.sh
