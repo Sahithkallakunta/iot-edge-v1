@@ -41,7 +41,7 @@ phases:
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
     displayName: 'cleanup'
     condition: always()
-- phase: ubuntu-1604-iot-edge
+- phase: ubuntu_1604_iot_edge
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-15.10-gateway"
   queue: Hosted Ubuntu 1604
@@ -50,7 +50,7 @@ phases:
   - script: |
      sudo ./v1/jenkins/linux_c.sh
     displayName: 'build'
-- phase: wind-river
+- phase: wind_river
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/wind-river-gateway"
   queue: Hosted Ubuntu 1604
