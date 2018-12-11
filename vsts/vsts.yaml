@@ -34,7 +34,7 @@ phases:
     name: 'aziotbld-win01'
   steps:
   - script: |
-      call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"
+      call "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\VsDevCmd.bat"
       call v1\jenkins\traceability.cmd
     displayName: 'build'
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
