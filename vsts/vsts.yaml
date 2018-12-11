@@ -1,0 +1,72 @@
+name: $(BuildID)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+resources:
+- repo: self
+  clean: true
+phases:
+- phase: checksubmodule  
+  queue:
+    name: Hosted Ubuntu 1604
+  steps:
+  - script: |
+      sudo apt-get update && apt-get install -y \
+      curl \
+      git \
+      python-software-properties \
+      build-essential \
+      pkg-config
+      sudo curl -sL https://deb.nodesource.com/setup_6.x | bash -
+      sudo apt-get install -y nodejs
+    displayName: 'setup'  
+  - script: |
+      npm install check_submodules
+      ./../../node_modules/.bin/check_submodules . master
+    displayName: 'build'
+- phase: inteledison
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/inteledison-gateway"
+  queue: Hosted Ubuntu 1604
+  displayName: build
+  steps:
+  - script: |
+     sudo ./v1/jenkins/inteledison_c.sh
+    displayName: 'build'
+- phase: traceability
+  queue:
+    name: 'Hosted VS2017'
+  steps:
+  - script: |
+      call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\Tools\\VsDevCmd.bat"
+      call v1\jenkins\traceability.cmd
+    displayName: 'build'
+  - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
+    displayName: 'cleanup'
+    condition: always()
+- phase: ubuntu-16.04-iot-edge
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-15.10-gateway"
+  queue: Hosted Ubuntu 1604
+  displayName: build
+  steps:
+  - script: |
+     sudo ./v1/jenkins/linux_c.sh
+    displayName: 'build'
+- phase: ubuntu-16.04-iot-edge
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/wind-river-gateway"
+  queue: Hosted Ubuntu 1604
+  displayName: build
+  steps:
+  - script: |
+     sudo ./v1/jenkins/windriver_linux_c.sh
+    displayName: 'build'
+- phase: win32edge
+  queue:
+    name: 'Hosted VS2017'
+  steps:
+  - script: |
+      call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\Tools\\VsDevCmd.bat"
+      call v1\jenkins\windows_c.cmd
+    displayName: 'build'
+  - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
+    displayName: 'cleanup'
+    condition: always()
