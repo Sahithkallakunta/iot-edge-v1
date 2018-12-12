@@ -34,7 +34,7 @@ phases:
     name: 'aziotbld-win01'
   steps:
   - script: |
-      call "C:\traceability_tool\traceabilitytool.exe -i "C:\agent\_work\8\s\v1" -buildcheck -e "C:\agent\_work\8\s\v1\deps;C:\agent\_work\8\s\v1\bindings\nodejs;C:\agent\_work\8\s\v1\bindings\dotnetcore\dotnet-core-binding""
+      call "C:\traceability_tool\traceabilitytool.exe -i 'C:\agent\_work\8\s\v1' -buildcheck -e 'C:\agent\_work\8\s\v1\deps;C:\agent\_work\8\s\v1\bindings\nodejs;C:\agent\_work\8\s\v1\bindings\dotnetcore\dotnet-core-binding'"
       call v1\jenkins\traceability.cmd
     displayName: 'build'
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
