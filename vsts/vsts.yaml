@@ -54,6 +54,9 @@ phases:
       export PATH=$PATH:/home/jenkins/maven/apache-maven-3.3.3/bin
       ./v1/jenkins/linux_c.sh
     displayName: 'build'
+    env:
+      IOTHUB_CONNECTION_STRING: $(IOTHUB_CONNECTION_STRING)
+      IOTHUB_EVENTHUB_CONNECTION_STRING: $(IOTHUB_EVENTHUB_CONNECTION_STRING)
 - phase: wind_river
   variables:
     _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/wind-river-gateway"
