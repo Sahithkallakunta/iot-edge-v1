@@ -35,7 +35,7 @@ phases:
   steps:
   - script: |
       call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"
-      $(Agent.BuildDirectory)
+      call "C:\traceability_tool\traceabilitytool.exe -i "$(Agent.BuildDirectory)\s\v1" -buildcheck -e "$(Agent.BuildDirectory)\s\v1\deps;$(Agent.BuildDirectory)\s\v1\bindings\nodejs;$(Agent.BuildDirectory)\s\v1\bindings\dotnetcore\dotnet-core-binding""
       call v1\jenkins\traceability.cmd
     displayName: 'build'
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
