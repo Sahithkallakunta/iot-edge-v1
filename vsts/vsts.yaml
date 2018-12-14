@@ -79,3 +79,11 @@ phases:
   - script: cd .. && rd /Q /S $(Agent.BuildDirectory)\s
     displayName: 'cleanup'
     condition: always()
+- phase: ubuntu_1404_iot_edge
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-14.04-gateway:iot-edge"
+  queue: Hosted Ubuntu 1604
+  steps:
+  - script: |
+     sudo ./v1/jenkins/ubuntu-14.04_c.sh
+    displayName: 'build'
