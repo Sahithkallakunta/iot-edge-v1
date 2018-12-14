@@ -88,3 +88,23 @@ phases:
      export PATH=$PATH:/home/jenkins/maven/apache-maven-3.3.3/bin
      sudo ./v1/jenkins/ubuntu-14.04_c.sh
     displayName: 'build'
+- phase: debian_iot_edge
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/debian-dotnet:java8"
+  queue: Hosted Ubuntu 1604
+  steps:
+  - script: |
+     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+     export PATH=$PATH:/home/jenkins/maven/apache-maven-3.3.3/bin
+     echo JAVA_HOME is this: $JAVA_HOME
+     mvn -v
+     ./v1/jenkins/linux_c.sh
+    displayName: 'build'
+- phase: raspberrypi2_iot_edge
+  variables:
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/raspberrypi-c"
+  queue: Hosted Ubuntu 1604
+  steps:
+  - script: |
+     ./v1/jenkins/raspberrypi_c.sh
+    displayName: 'build'
