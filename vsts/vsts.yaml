@@ -85,5 +85,6 @@ phases:
   queue: Hosted Ubuntu 1604
   steps:
   - script: |
+     export PATH=$PATH:/home/jenkins/maven/apache-maven-3.3.3/bin
      sudo ./v1/jenkins/ubuntu-14.04_c.sh
     displayName: 'build'
