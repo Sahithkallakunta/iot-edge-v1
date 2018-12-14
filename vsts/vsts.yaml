@@ -81,7 +81,7 @@ phases:
     condition: always()
 - phase: ubuntu_1404_iot_edge
   variables:
-    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-14.04-gateway:iot-edge"
+    _PREVIEW_VSTS_DOCKER_IMAGE: "aziotbld/ubuntu-14.04-gateway"
   queue: Hosted Ubuntu 1604
   steps:
   - script: |
